@@ -1,19 +1,15 @@
 package me.onyxiansoul.blockyapi;
 
-import com.sun.istack.internal.NotNull;
-import com.sun.istack.internal.Nullable;
 import me.onyxiansoul.blockyapi.customblock.CustomBlockID;
 import me.onyxiansoul.onyxiancoreapi.OnyxianCoreAPI;
 import org.bukkit.Location;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.inventory.ItemStack;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 
 public interface BlockyAPI {
-    
-
-    
-    @Nullable public String getTestString();
     
     //REAL API:
     public OnyxianCoreAPI getOnyxianCoreAPI();
@@ -54,7 +50,12 @@ public interface BlockyAPI {
      */
     @Nullable public ItemStack turnIntoCustomBlockStack(@NotNull ItemStack itemStack, @NotNull CustomBlockID customBlockID);
     
-    
+    /**Register a data obtainer, so the plugin can obtain data from another type of the event. The plugin will add an event listener for that kind of event as well!
+     * To create a BlockEventDataObtainer, simply implement {@link me.onyxiansoul.blockyapi.BlockEventDataObtainer}. 
+     * Make sure to override every method that could yield a value for your event, for example {@link me.onyxiansoul.onyxiancoreapi.event.EventDataObtainerBase #getTriggerPlayer()}
+     * @param dataObtainer = The class implementing BlockEventDataObtainer that allows the plugin to obtain data for the event.
+     */
+    @Nullable public void registerEventDataObtainer(BlockEventDataObtainer dataObtainer);
     
     
 }
