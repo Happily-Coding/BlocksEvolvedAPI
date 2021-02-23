@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <name>BlocksEvolvedAPI</name>
     <groupId>me.onyxiansoul</groupId>
     <artifactId>BlocksEvolvedAPI</artifactId>
     <version>0.0.1</version>
@@ -11,10 +12,9 @@
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
     <parent>
-        <groupId>me.onyxiansoul</groupId>
+        <groupId>com.github.OnyxianSoul</groupId>
         <artifactId>OnyxianBase</artifactId>
-        <version>0.0.1</version>
-        <relativePath>../OnyxianBase</relativePath>
+        <version>06544b7673</version>
     </parent>
     
     <repositories>		
@@ -24,7 +24,6 @@
       </repository>
     </repositories>
     
-    <name>BlocksEvolvedAPI</name>
     <build>
         <pluginManagement>
             <plugins>
@@ -63,6 +62,7 @@
             </plugins>
         </pluginManagement>
     </build>
+    
     <dependencies>
         <dependency>
             <groupId>com.github.onyxiansoul</groupId>
