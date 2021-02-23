@@ -17,6 +17,13 @@
         <relativePath>../OnyxianBase</relativePath>
     </parent>
     
+    <repositories>		
+      <repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+      </repository>
+    </repositories>
+    
     <name>BlockyAPI</name>
     <build>
         <pluginManagement>
@@ -58,10 +65,10 @@
     </build>
     <dependencies>
         <dependency>
-            <groupId>me.onyxiansoul</groupId>
+            <groupId>com.github.onyxiansoul</groupId>
             <artifactId>OnyxianCoreAPI</artifactId>
-            <version>0.0.1</version>
-            <scope>compile</scope>
+            <version>30a9e58160</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 </project>

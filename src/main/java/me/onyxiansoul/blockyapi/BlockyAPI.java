@@ -1,7 +1,7 @@
 package me.onyxiansoul.blockyapi;
 
+import com.github.onyxiansoul.onyxiancoreapi.event.EventDataObtainer;
 import me.onyxiansoul.blockyapi.customblock.CustomBlockID;
-import me.onyxiansoul.onyxiancoreapi.OnyxianCoreAPI;
 import org.bukkit.Location;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.inventory.ItemStack;
@@ -10,9 +10,6 @@ import org.jetbrains.annotations.Nullable;
 
 
 public interface BlockyAPI {
-    
-    //REAL API:
-    public OnyxianCoreAPI getOnyxianCoreAPI();
     
     /**Process a configurationSection and register the customBlockType.
      * @param configSection = the section that defines the blockType. The name of the section will become the name of the Custom_block_Type.
@@ -55,7 +52,7 @@ public interface BlockyAPI {
      * Make sure to override every method that could yield a value for your event, for example {@link me.onyxiansoul.onyxiancoreapi.event.EventDataObtainerBase #getTriggerPlayer()}
      * @param dataObtainer = The class implementing BlockEventDataObtainer that allows the plugin to obtain data for the event.
      */
-    @Nullable public void registerEventDataObtainer(BlockEventDataObtainer dataObtainer);
+    @Nullable public void registerEventDataObtainer(EventDataObtainer dataObtainer);
     
     
 }
