@@ -1,6 +1,5 @@
-package me.onyxiansoul.blockyapi.customblock;
+package com.github.onyxiansoul.blocks_evolved_api;
 
-import me.onyxiansoul.blockyapi.customblock.BlockKind;
 import org.bukkit.Material;
 
 public interface CustomBlockID {

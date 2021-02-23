@@ -1,4 +1,4 @@
-package me.onyxiansoul.blockyapi.customblock;
+package com.github.onyxiansoul.blocks_evolved_api;
 
 import java.util.HashMap;
 import java.util.HashSet;

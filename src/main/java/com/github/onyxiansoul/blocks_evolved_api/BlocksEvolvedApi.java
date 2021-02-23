@@ -1,7 +1,6 @@
-package me.onyxiansoul.blockyapi;
+package com.github.onyxiansoul.blocks_evolved_api;
 
 import com.github.onyxiansoul.onyxiancoreapi.event.EventDataObtainer;
-import me.onyxiansoul.blockyapi.customblock.CustomBlockID;
 import org.bukkit.Location;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.inventory.ItemStack;
@@ -9,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 
-public interface BlockyAPI {
+public interface BlocksEvolvedApi {
     
     /**Process a configurationSection and register the customBlockType.
      * @param configSection = the section that defines the blockType. The name of the section will become the name of the Custom_block_Type.
