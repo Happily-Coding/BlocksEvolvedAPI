@@ -1,9 +1,5 @@
 package com.github.onyxiansoul.blocks_evolved_api;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
-
 public enum BlockKind {
     
     ALL_BLOCKS, //Every block will be considered a block of this type, and will be affected by its settings
@@ -65,12 +61,6 @@ public enum BlockKind {
     }
     public boolean requiresIDNumber(){
         return false;
-    }
-    
-    public static final HashMap<String,BlockKind> onlyConfigKinds;
-    static{
-        onlyConfigKinds= new HashMap<>();
-        //onlyConfigKinds.put("REAL_BLOCK_OF_GROUP",BLOCKS_OF_MATERIAL_AND_BLOCKSTATE);
     }
     
 }
