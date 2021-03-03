@@ -1,6 +1,6 @@
 package com.github.onyxiansoul.blocks_evolved_api;
 
-import com.github.onyxiansoul.onyxiancoreapi.actions.interpreters.EventDataSupplier;
+import com.github.onyxiansoul.onyxiancoreapi.actions.interpreters.RuntimeSupplier;
 import org.bukkit.Location;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.inventory.ItemStack;
@@ -49,7 +49,7 @@ public interface BlocksEvolvedApi {
    * Make sure to override every method that could yield a value for your event, for example {@link me.onyxiansoul.onyxiancoreapi.event.EventDataObtainerBase #getTriggerPlayer()}
    * @param dataObtainer = The class implementing BlockEventDataObtainer that allows the plugin to obtain data for the event.
    */
-  @Nullable public void registerEventDataObtainer(EventDataSupplier dataObtainer);
+  @Nullable public void registerEventDataObtainer(RuntimeSupplier dataObtainer);
     
     
 }
