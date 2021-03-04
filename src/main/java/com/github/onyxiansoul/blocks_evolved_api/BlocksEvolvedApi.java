@@ -1,13 +1,31 @@
 package com.github.onyxiansoul.blocks_evolved_api;
 
 import com.github.onyxiansoul.onyxiancoreapi.actions.interpreters.RuntimeSupplier;
+import java.util.Set;
 import org.bukkit.Location;
 import org.bukkit.configuration.ConfigurationSection;
-import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+/**The main place to interact with BlocksEvolved. 
+ As a developer, you most likely wanna:
+ * Add a configuration setting that represents the name of the block type 
+ * Verify the configured block type exists (almost always, using BlockCustomizationKind.SUBTYPE
+ * Get the identifiable block type (store it in a variable)
+ * Use the identifiable block type to either place a custom block at a location, get an item stack or that block type, or check if an item stack is of that type.
+ */
 public interface BlocksEvolvedApi {
+  /**Checks if a block type of a certain name and kind exists
+   * @param customBlockName = the name of the section from which the block was registered.
+   * @return true if it exists, or false if it doesn't*/
+  @NotNull public boolean isIdentifiableBlockType(@NotNull String customBlockName);
+  
+  /** Get a previously registered custom block type, from its name & kind.
+   * @param customBlockName = the name of the section from which the block was registered.
+   * @return the previously registered custom block type.
+   * @throws IllegalArgumentException If there is no block of that type.
+   */
+  @NotNull public IdentifiableBlockType getIdentifiableBlockType(@NotNull String customBlockName) throws IllegalArgumentException;
     
   /**Process a configurationSection and register the customBlockType.
    * @param configSection = the section that defines the blockType. The name of the section will become the name of the Custom_block_Type.
@@ -16,40 +34,17 @@ public interface BlocksEvolvedApi {
    */
   public void registerCustomBlockType(@NotNull ConfigurationSection configSection);
 
-  /** Get the custom block ID of a custom block type. Must have been previously registered.
-   * @param customBlockName = the name of the section from which the block was registered.
+  /** Get all the block types of a location.
+   * @return All the block types of a location. (Global, The type of the material, the type of the state, and any subtypes placed by this block due to metadata).
    */
-  @Nullable public CustomBlockID getCustomBlockID(@NotNull String customBlockName);
-
-  /** Set the block of a location to a certain customBlock
-   * @param customBlockID: A valid id for a custom block. get it with 'getCustomBlockID'. Use{@link #getCustomBlockID} to get the ID for the block you want.
-   * @param location: The bukkit location where you'd like to change the block to the custom block.
-  */
-  public void setCustomBlock(@NotNull CustomBlockID customBlockID, @NotNull Location location);
-
-  /**Gets the default item to place a block of some ID.
-   * @param customBlockID: The id of the custom block you'd like to get the default item. Use{@link #getCustomBlockID} to get the ID for the block you want.
-   * @param size: The size of the item stack.
-   */
-  @Nullable public ItemStack getDefaultCustomBlockItem(@NotNull CustomBlockID customBlockID, @Nullable int size);
-
-  /** Checks if an item has the ability to place a customBlock. If it does, returns the CustomBlockID of the block that it places, otherwise returns null.
-   * @param itemStack: The item stack to analyze.
-   */
-  @Nullable public CustomBlockID getItemStackCustomBlockID(@NotNull ItemStack itemStack);
-
-  /** Adds metadata to an itemStack to turn it into an ItemStack that places a certain customBlock on right click
-   * @param itemStack: The itemStack to add the metadata to
-   * @param customBlockID: The CustomBlockID of the custom block that should be placed on right click. Use{@link #getCustomBlockID} to get the ID for the block you want.
-   */
-  @Nullable public ItemStack turnIntoCustomBlockStack(@NotNull ItemStack itemStack, @NotNull CustomBlockID customBlockID);
-
+  @Nullable public Set<IdentifiableBlockType> getBlockTypes(@NotNull Location location);
+  
   /**Register a data obtainer, so the plugin can obtain data from another type of the event. The plugin will add an event listener for that kind of event as well!
    * To create a BlockEventDataObtainer, simply implement {@link me.onyxiansoul.blockyapi.BlockEventDataObtainer}. 
    * Make sure to override every method that could yield a value for your event, for example {@link me.onyxiansoul.onyxiancoreapi.event.EventDataObtainerBase #getTriggerPlayer()}
    * @param dataObtainer = The class implementing BlockEventDataObtainer that allows the plugin to obtain data for the event.
+   * @deprecated May be removed or changed.
    */
   @Nullable public void registerEventDataObtainer(RuntimeSupplier dataObtainer);
-    
-    
+  
 }
