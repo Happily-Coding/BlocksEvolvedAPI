@@ -10,9 +10,9 @@ import org.jetbrains.annotations.Nullable;
 /**The main place to interact with BlocksEvolved. 
  As a developer, you most likely wanna:
  * Add a configuration setting that represents the name of the block type 
- * Verify the configured block type exists (almost always, using BlockCustomizationKind.SUBTYPE
+ * Verify the configured block type exists
  * Get the identifiable block type (store it in a variable)
- * Use the identifiable block type to either place a custom block at a location, get an item stack or that block type, or check if an item stack is of that type.
+ * Use the identifiable block type to either place a custom block at a location, verify the location has a certain block type,  get an item stack of that block type, or check if an item stack is of that type.
  */
 public interface BlocksEvolvedApi {
   /**Checks if a block type of a certain name and kind exists
