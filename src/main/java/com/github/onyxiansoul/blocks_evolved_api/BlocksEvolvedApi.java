@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**The main place to interact with BlocksEvolved. 
- As a developer, you most likely wanna:
+ As a developer, you most likely want to:
  * Add a configuration setting that represents the name of the block type 
  * Verify the configured block type exists
  * Get the identifiable block type (store it in a variable)

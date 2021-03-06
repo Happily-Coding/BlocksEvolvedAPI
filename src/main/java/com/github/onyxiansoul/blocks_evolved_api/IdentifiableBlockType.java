@@ -1,6 +1,7 @@
 package com.github.onyxiansoul.blocks_evolved_api;
 
 import org.bukkit.Location;
+import org.bukkit.block.data.BlockData;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -23,6 +24,14 @@ public interface IdentifiableBlockType {
   public @NotNull boolean isPlacer(@NotNull ItemStack itemStack);
   
   /*Sets the block at a location to a custom block**/
-  public @Nullable void setBlock(Location location);
+  public void setBlock(Location location);
+  
+  /**Sets any (internal) additional information (required by BlocksEvolved) required for a custom block of this type at a location
+   * If there is none required, will do nothing.
+   * @param location Location where the placement of a block of this type took place.
+   * @param blockData The data of the block that was placed. Its only used to verify that the rest of the block matches this custom block type. If null, Blocks Evolved will assume that the block data is of the correct type.
+   * @throws IllegalArgumentException If BlockData wasn't null and was different to the expected data.
+   */
+  public void setAdditionalInfo(@NotNull Location location, @Nullable BlockData blockData);
   
 }
