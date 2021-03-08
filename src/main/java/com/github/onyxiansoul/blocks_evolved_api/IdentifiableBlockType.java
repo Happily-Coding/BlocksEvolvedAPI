@@ -9,20 +9,6 @@ import org.jetbrains.annotations.Nullable;
 
 public interface IdentifiableBlockType {
   
-  /**Gets the material of the custom block type. 
-   * Please note this may be null for blocks that are defined exclusively by their subtype & for the block type that represents the 'GLOBAL BLOCK'
-   * If you are getting this in order to handle block placement, and it is null, you should just call @link{ #setAdditionalInfo} and consider the block placed. No modification of the world is necessary.*/
-  public @Nullable Material getIdentifyingMaterial();
-  
-  /**Gets the block data of the custom block type. 
-   * Please note this may be null for blocks that are defined exclusively by their subtype
-   * if you are getting this in order to handle block placement, and it is null, you should just call @link{#setAdditionalInfo} and consider the block placed. No modification of the world is necessary.*/
-  public @Nullable BlockData getIdentifiyingBlockData();
-  
-  /**Gets the short that identifies this subtype.
-   * It will return null, if the block type doesn't require a short for identification, for example blocks defined exclusively by a material / blockdata.*/
-  public @Nullable Short getIdentifiyingSubtype();
-   
   /**Gets an items tack capable of placing this block
    * @param size The size the item stack should have.
    */
@@ -41,7 +27,30 @@ public interface IdentifiableBlockType {
   /*Sets the block at a location to a custom block**/
   public void setBlock(Location location);
   
-  /**Sets any (internal) additional information (required by BlocksEvolved) required for a custom block of this type at a location
+  //The next methods are meant to be used exclusively by plugins that manually handle the placement of Blocks Evolved Custom Block Types.  
+  //-------------------------------------------------------------------------------------------------------------------------
+  
+  /**Gets the block data of the custom block type.
+   * Please note this will be null for blocks that are defined exclusively by their subtype & for the block type that represents the 'GLOBAL BLOCK'. It will not be null for blocks that return true to #areWorldChangesNecessary
+   * If you are using this data to manually handle block placement, use #areWorldChangesNecessary, and if the result is false, just call @link{#setAdditionalInfo} and consider the block placed, o modification of the world is necessary.
+   */
+  public @Nullable BlockData getIdentifiyingBlockData();
+  
+  /**Gets the material of the custom block type; included for sake of completeness but you shouldn't need this.
+   * Please note this may be null for blocks that are defined exclusively by their subtype & for the block type that represents the 'GLOBAL BLOCK' It will not be null for blocks that return true to #areWorldChangesNecessary
+   * If you are getting this in order to handle block placement, and it is null, you should just call @link{ #setAdditionalInfo} and consider the block placed. No modification of the world is necessary.*/
+  public @Nullable Material getIdentifyingMaterial();
+  
+  /**Gets the short that identifies this subtype; included for sake of completeness but you shouldn't need this.
+   * It will return null, if the block type doesn't require a short for identification, for example blocks defined exclusively by a material / blockdata.*/
+  public @Nullable Short getIdentifiyingSubtype();
+  
+  /**Checks if it'd be necessairy to change the block data of a certain location with a data produced by #getIdentifiyingBlockData in order to place a custom block type
+   * It can prevent unnecessairy world modifications and it is HIGHLY suggested that if you are manually handling the placement of the block and you have the block data of the location you call it prior to doing so.
+   */
+  public @NotNull boolean areWorldChangesNecessairy(BlockData blockDataAtPlacementLocation);
+  
+  /**Sets any (internal) additional information (required by BlocksEvolved) for a custom block of this type at a location
    * If there is none required, will do nothing.
    * @param location Location where the placement of a block of this type took place.
    * @param blockData The data of the block that was placed. Its only used to verify that the rest of the block matches this custom block type. If null, Blocks Evolved will assume that the block data is of the correct type.
