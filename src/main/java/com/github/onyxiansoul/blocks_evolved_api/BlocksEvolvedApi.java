@@ -9,11 +9,12 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**The main place to interact with BlocksEvolved. 
- As a developer, you most likely want to:
- * Add a configuration setting that represents the name of the block type 
- * Verify the configured block type exists
- * Get the identifiable block type (store it in a variable)
- * Use the identifiable block type to either place a custom block at a location, verify the location has a certain block type,  get an item stack of that block type, or check if an item stack is of that type.
+ * As a developer, you most likely want to:
+  * Add a configuration setting that represents the name of the block type 
+  * Verify the configured block type exists
+  * Get the identifiable block type (store it in a variable)
+  * Use the identifiable block type to either place a custom block at a location, verify the location has a certain block type, get an item stack of that block type, or check if an item stack is of that type.
+ * If you need help using the API, or want to let me know you used it so I can let BlocksEvolved users know, contact me at https://www.spigotmc.org/members/onyxiansoul.667504/ or discord: Onyx#2196 (I use spigot more frequently).
  */
 public interface BlocksEvolvedApi {
   
