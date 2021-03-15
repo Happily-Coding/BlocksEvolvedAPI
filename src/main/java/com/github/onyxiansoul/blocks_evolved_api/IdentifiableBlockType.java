@@ -54,7 +54,7 @@ public interface IdentifiableBlockType {
    * If there is none required, will do nothing.
    * @param location Location where the placement of a block of this type took place.
    * @param blockData The data of the block that was placed. Its only used to verify that the rest of the block matches this custom block type. If null, Blocks Evolved will assume that the block data is of the correct type.
-   * @throws IllegalArgumentException If BlockData wasn't null and was different to the expected data. To prevent the possibility of this exceptions use {@link BlocksEvolvedAPI#isValidBlockType} to prevent exceptions.
+   * @throws IllegalArgumentException If BlockData wasn't null and was different to the expected data. Won't happen if you called {@link BlocksEvolvedAPI#isValidBlockType} when you got this IdentifiableBlockType, and the blockData of this method is the same you used to call #isValidBlockType.
    */
   public void setAdditionalInfo(@NotNull Location location, @Nullable BlockData blockData);
 

@@ -1,6 +1,6 @@
 package com.github.onyxiansoul.blocks_evolved_api;
 
-import com.github.onyxiansoul.onyxiancoreapi.actions.interpreters.RuntimeSupplier;
+import com.github.onyxiansoul.onyxiancoreapi.actionable_system.RuntimeSupplier;
 import java.util.Set;
 import org.bukkit.Location;
 import org.bukkit.block.data.BlockData;
