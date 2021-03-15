@@ -39,7 +39,7 @@ public interface IdentifiableBlockType {
   /**Gets the material of the custom block type; included for sake of completeness but you shouldn't need this.
    * Please note this may be null for blocks that are defined exclusively by their subtype & for the block type that represents the 'GLOBAL BLOCK' It will not be null for blocks that return true to #areWorldChangesNecessary
    * If you are getting this in order to handle block placement, and it is null, you should just call @link{ #setAdditionalInfo} and consider the block placed. No modification of the world is necessary.*/
-  public @Nullable Material getIdentifyingMaterial();
+  public @Nullable Material getIdentifiyingMaterial();
   
   /**Gets the short that identifies this subtype; included for sake of completeness but you shouldn't need this.
    * It will return null, if the block type doesn't require a short for identification, for example blocks defined exclusively by a material / blockdata.*/
