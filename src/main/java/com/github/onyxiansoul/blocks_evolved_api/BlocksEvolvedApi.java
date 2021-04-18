@@ -1,6 +1,5 @@
 package com.github.onyxiansoul.blocks_evolved_api;
 
-import com.github.onyxiansoul.onyxiancoreapi.actionable_system.RuntimeSupplier;
 import java.util.Set;
 import org.bukkit.Location;
 import org.bukkit.block.data.BlockData;
@@ -47,13 +46,5 @@ public interface BlocksEvolvedApi {
    * @return All the block types of a location. (Global, The type of the material, the type of the state, and any subtypes placed by this block due to metadata).
    */
   @Nullable public Set<IdentifiableBlockType> getBlockTypes(@NotNull Location location);
-  
-  /**Register a data obtainer, so the plugin can obtain data from another type of the event. The plugin will add an event listener for that kind of event as well!
-   * To create a BlockEventDataObtainer, simply implement {@link me.onyxiansoul.blockyapi.BlockEventDataObtainer}. 
-   * Make sure to override every method that could yield a value for your event, for example {@link com.github.onyxiansoul.onyxiancoreapi.actions.interpreters.RuntimeSupplier #getTriggerPlayer()}
-   * @param dataObtainer = The class implementing BlockEventDataObtainer that allows the plugin to obtain data for the event.
-   * @deprecated May be removed or changed.
-   */
-  @Nullable public void registerEventDataObtainer(RuntimeSupplier dataObtainer);
   
 }
