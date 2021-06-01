@@ -3,7 +3,6 @@ package com.github.onyxiansoul.blocks_evolved_api;
 import java.util.Set;
 import org.bukkit.Location;
 import org.bukkit.block.data.BlockData;
-import org.bukkit.configuration.ConfigurationSection;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -40,7 +39,7 @@ public interface BlocksEvolvedApi {
    * The contents of the section will define all block settings.
    * Uses the exact syntax required for any custom block defined within 'CustomBlocks' on the plugin config.
    */
-  public void registerCustomBlockType(@NotNull ConfigurationSection configSection);
+  //public void registerCustomBlockType(@NotNull ConfigurationSection configSection);
 
   /** Get all the block types of a location.
    * @return All the block types of a location. (Global, The type of the material, the type of the state, and any subtypes placed by this block due to metadata).
