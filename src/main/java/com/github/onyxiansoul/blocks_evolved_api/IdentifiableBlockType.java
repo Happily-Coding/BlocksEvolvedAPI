@@ -1,5 +1,6 @@
 package com.github.onyxiansoul.blocks_evolved_api;
 
+import com.github.onyxiansoul.onyxiancoreapi.identity.Nameable;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.data.BlockData;
@@ -7,7 +8,7 @@ import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public interface IdentifiableBlockType {
+public interface IdentifiableBlockType extends Nameable {
   
   /**Gets an items tack capable of placing this block
    * @param size The size the item stack should have.
