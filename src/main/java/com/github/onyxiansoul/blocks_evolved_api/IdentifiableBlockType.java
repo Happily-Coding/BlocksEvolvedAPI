@@ -1,7 +1,6 @@
 package com.github.onyxiansoul.blocks_evolved_api;
 
 import com.github.onyxiansoul.onyxiancoreapi.identity.Nameable;
-import java.util.List;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.data.BlockData;
@@ -46,12 +45,6 @@ public interface IdentifiableBlockType extends Nameable {
   /**Gets the short that identifies this subtype; included for sake of completeness but you shouldn't need this.
    * It will return null, if the block type doesn't require a short for identification, for example blocks defined exclusively by a material / blockdata.*/
   public @Nullable Short getIdentifiyingSubtype();
-  
-  /** Gets the list of generation instructions of this block type's config. 
-   * Used automatically by blocks evolved, to make sure the block type's world generation takes place.
-   * Shouldn't be required by external plugins.
-  */
-  public @NotNull List<GenerationInstructions> getGenerationInstructions();
   
   /**Checks if it'd be necessairy to change the block data of a certain location with a data produced by #getIdentifiyingBlockData in order to place a custom block type
    * It can prevent unnecessairy world modifications and it is HIGHLY suggested that if you are manually handling the placement of the block and you have the block data of the location you call it prior to doing so.
