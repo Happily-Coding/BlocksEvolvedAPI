@@ -8,9 +8,9 @@ import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public interface IdentifiableBlockType extends Nameable {
+public interface Evolution extends Nameable {
   
-  /**Gets an items tack capable of placing this block
+  /**Gets an item stack capable of placing this block
    * @param size The size the item stack should have.
    */
   public @Nullable ItemStack getItemStack(int size);
@@ -28,8 +28,11 @@ public interface IdentifiableBlockType extends Nameable {
   /*Sets the block at a location to a custom block**/
   public void setBlock(Location location);
   
-  //The next methods are meant to be used exclusively by plugins that manually handle the placement of Blocks Evolved Custom Block Types.  
-  //-------------------------------------------------------------------------------------------------------------------------
+  /**Sets additional information,(required by BlocksEvolved) to make a location have this block type. DOES NOT modify the world in any way.
+   * If there is none required, will do nothing.
+   * @param location Location where the placement of a block of this type took place.
+   */
+  public void setAdditionalInfo(@NotNull Location location);
   
   /**Gets the block data of the custom block type.
    * Please note this will be null for blocks that are defined exclusively by their subtype & for the block type that represents the 'GLOBAL BLOCK'. It will not be null for blocks that return true to #areWorldChangesNecessary
@@ -50,13 +53,5 @@ public interface IdentifiableBlockType extends Nameable {
    * It can prevent unnecessairy world modifications and it is HIGHLY suggested that if you are manually handling the placement of the block and you have the block data of the location you call it prior to doing so.
    */
   public @NotNull boolean areWorldChangesNecessairy(BlockData blockDataAtPlacementLocation);
-  
-  /**Sets any (internal) additional information (required by BlocksEvolved) for a custom block of this type at a location
-   * If there is none required, will do nothing.
-   * @param location Location where the placement of a block of this type took place.
-   * @param blockData The data of the block that was placed. Its only used to verify that the rest of the block matches this custom block type. If null, Blocks Evolved will assume that the block data is of the correct type.
-   * @throws IllegalArgumentException If BlockData wasn't null and was different to the expected data. Won't happen if you called {@link BlocksEvolvedAPI#isValidBlockType} when you got this IdentifiableBlockType, and the blockData of this method is the same you used to call #isValidBlockType.
-   */
-  public void setAdditionalInfo(@NotNull Location location, @Nullable BlockData blockData);
 
 }
